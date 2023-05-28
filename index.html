@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health Monitoring System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        setInterval(loadDoc, 1000);
+
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.body.innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "/", true);
+            xhttp.send();
+        }
+    </script>
+</head>
+<body>
+
+    <div id="page">
+        <div class="header">
+            <h1>Health Monitoring System</h1>
+            <h3><a href="https://iotprojectsideas.com">https://theiotprojects.com</a></h3>
+        </div>
+        <div id="content" align="center">
+            <div class="box-full" align="left">
+                <h2>Sensors Readings</h2>
+                
+                <p class="sensor">
+                    <i class="fas fa-burn" style="color:#f7347a"></i>
+                    <span class="sensor-labels"> SpO2 </span>
+                    <?php echo (int)$SpO2; ?>
+                    <sup class="units">%</sup>
+                </p>
+                <hr>
+                <div class="sensors">
+                    <p class="sensor">
+                        <i class="fas fa-thermometer-full" style="color:#d9534f"></i>
+                        <span class="sensor-labels"> Body Temperature </span>
+                        <?php echo (int)$bodytemperature; ?>
+                        <sup class="units">°C</sup>
+                    </p>
+                    <!-- Rest of the code goes here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
